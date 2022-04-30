@@ -1,0 +1,23 @@
+First just create a new repository (Make sure the repository is public) and upload all these files in github. Then goto your repository you have created and click the "000-
+default.conf" file, click raw then copy the link and paste it into the file name "Dockerfile" in line 10. (eg. https://raw.githubusercontent.com/XXXX/test/main/000-default.conf)  
+<----- Replace this
+
+Next copy the repository link. just goto the repository you just created then click code and copy the link. Then goto this website (https://okteto.com/) and create a account, goto 
+namespaces click Deploy then click Git URL then just paste the repository link then click deploy. Afterthat just let it run. Next it will popup a link the copy the link without 
+https:// and replace it in this file line 12 (eg. areyouok-XXXX.cloud.okteto.net) Last, just run the commands down there. You can run it in any other linux but i recommend run it 
+in windows ubuntu wsl. Now you can enjoy your free vps!
+
+apt install npm
+npm install -g wstunnel
+wstunnel -t 1:127.0.0.1:22 wss://areyouok-XXXX.cloud.okteto.net &
+ssh root@127.0.0.1 -p 1
+password:123456
+
+下载ded文件 https://github.com/cloudflare/cloudflared/releases/download/2021.11.0/cloudflared-linux-amd64.deb
+dpkg -i 文件名.ded
+cloudflared tunnel login
+创建隧道：cloudflared tunnel create 隧道名
+删除隧道：cloudflared tunnel delete 隧道名
+列出隧道：cloudflared tunnel list
+配置隧道：cloudflared tunnel route dns 隧道名 刚才选择的域名
+隧道指向：cloudflared tunnel run --url http://127.0.0.1:8888 --no-tls-verify 隧道名称
